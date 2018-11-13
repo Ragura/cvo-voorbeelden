@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <cvo-dropdown-basic :keuzes="namen" @selected="selectedNaam = $event"/>
+    <hr>
+    <cvo-dropdown-advanced :keuzes="dieren" v-model="selectedDier"/>
+    Geselecteerd dier is: {{ selectedDier }}
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CvoDropdownBasic from './components/CvoDropdownBasic.vue';
+import CvoDropdownAdvanced from './components/CvoDropdownAdvanced.vue';
 
 export default {
+  // @selected="selectedDier = $event"
   name: 'app',
+  data() {
+    return {
+      dieren: [
+        "Hond",
+        "Kat",
+        "Parkiet",
+        "Hamster"
+      ],
+      namen: [
+        "Frank",
+        "Veerle",
+        "Rita",
+        "Daniel"
+      ],
+      selectedDier: "",
+      selectedNaam: ""
+    }
+  },
   components: {
-    HelloWorld
+    CvoDropdownBasic,
+    CvoDropdownAdvanced
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
